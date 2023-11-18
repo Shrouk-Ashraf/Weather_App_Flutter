@@ -1,6 +1,6 @@
 # weather_app
 
-This weather application shows the weather of any country the user wants and changes the material theme accoeding to the weather.
+This weather application shows the weather of any country the user wants and changes the theme color according to the weather.
 
 This application uses the following technologies as:
 1) Dio package.
