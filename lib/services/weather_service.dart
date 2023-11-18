@@ -1,5 +1,5 @@
 
-
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
@@ -16,7 +16,7 @@ class WeatherService{
   Future<WeatherModel> getCurrentWeather(String cityName) async{
 
     try {
-      Response response = await dio.get('$base_Url?key=$apiKey&q=$cityName&days=10&aqi=no&alerts=yes}');
+      Response response = await dio.get('$base_Url?key=$apiKey&q=$cityName&days=6&aqi=no&alerts=yes}');
 
       WeatherModel weatherModel = WeatherModel.fromJson(response.data);
       return weatherModel;
@@ -27,5 +27,6 @@ class WeatherService{
       throw Exception("Try again later");
     }
   }
+
 
 }

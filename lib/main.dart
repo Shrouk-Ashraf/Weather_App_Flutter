@@ -24,7 +24,7 @@ class WeatherApp extends StatelessWidget {
                   BlocProvider.of<GetWeatherCubit>(context).weatherModel?.condition
                 )
             ),
-            home: HomeView(),
+            home: const HomeView(),
           );
         },
       ),
@@ -40,8 +40,10 @@ MaterialColor getMaterialColorForWeatherData(String? condition) {
     case 'Sunny':
       return Colors.yellow;
     case 'Partly cloudy':
-      return Colors.lightBlue;
     case 'Cloudy':
+      return Colors.blueGrey;
+    case 'Clear':
+      return Colors.lightBlue;
     case 'Overcast':
     case 'Mist':
       return Colors.grey;
@@ -63,7 +65,6 @@ MaterialColor getMaterialColorForWeatherData(String? condition) {
     case 'Light drizzle':
       return Colors.blue;
     case 'Freezing drizzle':
-      return Colors.grey;
     case 'Heavy freezing drizzle':
       return Colors.grey;
     case 'Patchy light rain':
