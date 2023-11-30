@@ -18,8 +18,16 @@ class WeatherApp extends StatelessWidget {
       child: BlocBuilder<GetWeatherCubit,WeatherState>(
         builder: (context,state) {
           return MaterialApp(
+            // checkerboardOffscreenLayers:true ,
+            // showPerformanceOverlay: true,
+            // showSemanticsDebugger: true,
+            // useInheritedMediaQuery: true,
+            // checkerboardRasterCacheImages:true ,
+            // debugShowMaterialGrid: true,
+
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
+              useMaterial3: false,
                 primarySwatch:getMaterialColorForWeatherData(
                   BlocProvider.of<GetWeatherCubit>(context).weatherModel?.condition
                 )
