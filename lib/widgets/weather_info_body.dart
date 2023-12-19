@@ -6,27 +6,27 @@ import 'package:weather_app/model/weather_model.dart';
 import 'ForecastCard.dart';
 
 class WeatherInfoBody extends StatelessWidget {
-  const WeatherInfoBody({Key? key, required this.weatherModel}) : super(key: key);
+  const WeatherInfoBody({Key? key, required this.weatherModel})
+      : super(key: key);
 
   final WeatherModel weatherModel;
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Container(
-        decoration: BoxDecoration(
+    return Container(
+      height: double.infinity,
+      decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              getMaterialColorForWeatherData(weatherModel.condition),
-              getMaterialColorForWeatherData(weatherModel.condition)[300]!,
-              getMaterialColorForWeatherData(weatherModel.condition)[100]!,
-              getMaterialColorForWeatherData(weatherModel.condition)[50]!,
-            ]
-          )
-        ),
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+            getMaterialColorForWeatherData(weatherModel.condition),
+            getMaterialColorForWeatherData(weatherModel.condition)[300]!,
+            getMaterialColorForWeatherData(weatherModel.condition)[100]!,
+            getMaterialColorForWeatherData(weatherModel.condition)[50]!,
+          ])),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 28, horizontal: 18),
           child: Column(
@@ -34,21 +34,22 @@ class WeatherInfoBody extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
                   SizedBox(
                     width: 200,
                     child: FittedBox(
                       child: Text(
                         weatherModel.cityName,
-
                       ),
                     ),
                   ),
-                  const Icon(Icons.location_on_outlined,size: 40,),
+                  const Icon(
+                    Icons.location_on_outlined,
+                    size: 40,
+                  ),
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 30,bottom: 10),
+                padding: const EdgeInsets.only(top: 30, bottom: 10),
                 child: Text(
                   weatherModel.temp.round().toString(),
                   style: const TextStyle(
@@ -69,7 +70,7 @@ class WeatherInfoBody extends StatelessWidget {
                   ),
                   Text(
                     '${weatherModel.minTemp.round()}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18,
                     ),
                   ),
@@ -98,18 +99,24 @@ class WeatherInfoBody extends StatelessWidget {
                   ),
                 ],
               ),
-              const Divider(height: 5,thickness: 2,),
+              const Divider(
+                height: 5,
+                thickness: 2,
+              ),
               ListView.separated(
-                physics: NeverScrollableScrollPhysics(),
-                separatorBuilder: (context,index){
-                 return SizedBox(height: 20,);
-                },
-                shrinkWrap: true,
-                itemCount: weatherModel.forecast.length-1,
-                  itemBuilder: (context,index){
-                    ForecastModel forecast = ForecastModel.fromData(weatherModel.forecast[index+1]);
-                    return ForecastCard(forecastModel:forecast);
-                  })
+                  physics: const NeverScrollableScrollPhysics(),
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      height: 20,
+                    );
+                  },
+                  shrinkWrap: true,
+                  itemCount: weatherModel.forecast.length - 1,
+                  itemBuilder: (context, index) {
+                    ForecastModel forecast = ForecastModel.fromData(
+                        weatherModel.forecast[index + 1]);
+                    return ForecastCard(forecastModel: forecast);
+                  }),
             ],
           ),
         ),
